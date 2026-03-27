@@ -1,1 +1,1100 @@
-Tes
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>portal akademik</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary: #029b51;
+            --bg-light: #ebfff5;
+            --white: #ffffff;
+            --dark: #242424;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        .card-custom {
+            background: var(--white);
+            border: 1px solid rgba(2, 155, 81, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-custom:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -8px rgba(2, 155, 81, 0.15);
+            border-color: var(--primary);
+        }
+
+        .icon-box {
+            background-color: var(--bg-light);
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .group:hover .icon-box {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        /* Page Transition Logic */
+        .page {
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s ease-out;
+        }
+
+        .page.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Modern Table Styling */
+        .table-container {
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .custom-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .custom-table th {
+            background-color: #f8fafc;
+            color: #475569;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            padding: 1.25rem 1rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .custom-table td {
+            padding: 1.25rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: middle;
+            font-size: 0.875rem;
+            transition: background 0.2s;
+        }
+
+        .custom-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .custom-table tbody tr:nth-child(even) {
+            background-color: #fdfdfd;
+        }
+
+        .custom-table tbody tr:hover {
+            background-color: #f1fdf6;
+        }
+
+        .btn-access {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            transition: all 0.2s;
+        }
+
+        .btn-access:hover {
+            background-color: #028545;
+            box-shadow: 0 4px 12px rgba(2, 155, 81, 0.2);
+        }
+
+        .badge-method {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.7rem;
+            background-color: #e2e8f0;
+            color: #475569;
+            display: inline-block;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-light);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #b6e6cc;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- HALAMAN UTAMA -->
+    <div id="home-page" class="page active">
+        <header class="pt-16 pb-12 px-4 text-center max-w-4xl mx-auto">
+            <div class="inline-flex items-center justify-center w-24 h-24 bg-[#029b51] rounded-full shadow-2xl mb-8 text-white ring-8 ring-white/50">
+                <i data-lucide="graduation-cap" class="w-12 h-12"></i>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-[#242424] tracking-tight mb-4">
+                Portal Akademik Digital
+            </h1>
+            <p class="text-slate-600 text-lg max-w-2xl mx-auto">
+                Akses seluruh sumber daya pembelajaran, tugas, dan layanan administrasi dalam satu pintu.
+            </p>
+        </header>
+
+        <main class="max-w-6xl mx-auto px-4 pb-24">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Category: Akademik -->
+                <section class="space-y-4">
+                    <div class="flex items-center space-x-3 px-2">
+                        <div class="w-2 h-6 bg-[#029b51] rounded-full"></div>
+                        <h2 class="text-sm font-bold text-[#242424] uppercase tracking-[0.2em]">Akademik</h2>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <button onclick="navigateTo('schedule-page')" class="w-full card-custom flex items-center p-6 rounded-2xl group text-left">
+                            <div class="icon-box p-3 rounded-xl mr-5">
+                                <i data-lucide="calendar-days" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-[#242424]">Jadwal Perkuliahan</h3>
+                                <p class="text-xs text-slate-500">Cek waktu & ruang kelas</p>
+                            </div>
+                            <i data-lucide="arrow-right" class="ml-auto w-5 h-5 text-slate-300 group-hover:text-[#029b51] transition-transform group-hover:translate-x-1"></i>
+                        </button>
+
+                        <button onclick="navigateTo('learning-page')" class="w-full card-custom flex items-center p-6 rounded-2xl group text-left">
+                            <div class="icon-box p-3 rounded-xl mr-5">
+                                <i data-lucide="book-marked" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-[#242424]">Pembelajaran</h3>
+                                <p class="text-xs text-slate-500">Materi & Modul Digital</p>
+                            </div>
+                            <i data-lucide="arrow-right" class="ml-auto w-5 h-5 text-slate-300 group-hover:text-[#029b51] transition-transform group-hover:translate-x-1"></i>
+                        </button>
+
+                        <button onclick="navigateTo('rpp-page')" class="w-full card-custom flex items-center p-6 rounded-2xl group text-left">
+                            <div class="icon-box p-3 rounded-xl mr-5">
+                                <i data-lucide="file-spreadsheet" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-[#242424]">RPP</h3>
+                                <p class="text-xs text-slate-500">Rencana Pelaksanaan Pembelajaran</p>
+                            </div>
+                            <i data-lucide="arrow-right" class="ml-auto w-5 h-5 text-slate-300 group-hover:text-[#029b51] transition-transform group-hover:translate-x-1"></i>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Category: Tugas -->
+                <section class="space-y-4">
+                    <div class="flex items-center space-x-3 px-2">
+                        <div class="w-2 h-6 bg-[#029b51] rounded-full"></div>
+                        <h2 class="text-sm font-bold text-[#242424] uppercase tracking-[0.2em]">Tugas</h2>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <button onclick="navigateTo('submission-menu-page')" class="w-full card-custom flex items-center p-6 rounded-2xl group text-left">
+                            <div class="icon-box p-3 rounded-xl mr-5">
+                                <i data-lucide="cloud-upload" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-[#242424]">Pengumpulan</h3>
+                                <p class="text-xs text-slate-500">Kirim tugas & tes pemahaman</p>
+                            </div>
+                            <i data-lucide="arrow-right" class="ml-auto w-5 h-5 text-slate-300 group-hover:text-[#029b51] transition-transform group-hover:translate-x-1"></i>
+                        </button>
+
+                        <a href="#" class="card-custom flex items-center p-6 rounded-2xl group">
+                            <div class="icon-box p-3 rounded-xl mr-5">
+                                <i data-lucide="user-check-2" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-[#242424]">Presensi</h3>
+                                <p class="text-xs text-slate-500">Absensi Mahasiswa</p>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Category: Bantuan -->
+                <section class="space-y-4">
+                    <div class="flex items-center space-x-3 px-2">
+                        <div class="w-2 h-6 bg-[#029b51] rounded-full"></div>
+                        <h2 class="text-sm font-bold text-[#242424] uppercase tracking-[0.2em]">Bantuan</h2>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="card-custom p-8 rounded-3xl text-center">
+                            <div class="w-16 h-16 bg-[#ebfff5] text-[#029b51] rounded-full flex items-center justify-center mx-auto mb-6">
+                                <i data-lucide="headset" class="w-8 h-8"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#242424] mb-3">Butuh Bantuan?</h3>
+                            <p class="text-sm text-slate-500 mb-6 px-4">Admin kami siap membantu kendala teknis Anda.</p>
+                            <div class="grid grid-cols-5 gap-3">
+                                <a href="https://wa.me/6282154577981" target="_blank" class="inline-flex items-center justify-center h-12 w-12 rounded-xl bg-transparent hover:bg-gray-100 transition-all shadow-md active:scale-95" aria-label="WhatsApp">
+                                    <img src="https://img.icons8.com/color/48/whatsapp.png" alt="WhatsApp" class="w-8 h-8">
+                                </a>
+                                <a href="https://www.facebook.com" target="_blank" class="inline-flex items-center justify-center h-12 w-12 rounded-xl bg-transparent hover:bg-gray-100 transition-all shadow-md active:scale-95" aria-label="Facebook">
+                                    <img src="https://img.icons8.com/color/48/facebook.png" alt="Facebook" class="w-8 h-8">
+                                </a>
+                                <a href="https://www.instagram.com" target="_blank" class="inline-flex items-center justify-center h-12 w-12 rounded-xl bg-transparent hover:bg-gray-100 transition-all shadow-md active:scale-95" aria-label="Instagram">
+                                    <img src="https://img.icons8.com/color/48/instagram-new.png" alt="Instagram" class="w-8 h-8">
+                                </a>
+                                <a href="https://www.tiktok.com" target="_blank" class="inline-flex items-center justify-center h-12 w-12 rounded-xl bg-transparent hover:bg-gray-100 transition-all shadow-md active:scale-95" aria-label="TikTok">
+                                    <img src="https://img.icons8.com/color/48/tiktok.png" alt="TikTok" class="w-8 h-8">
+                                </a>
+                                <a href="https://www.youtube.com" target="_blank" class="inline-flex items-center justify-center h-12 w-12 rounded-xl bg-transparent hover:bg-gray-100 transition-all shadow-md active:scale-95" aria-label="YouTube">
+                                    <img src="https://img.icons8.com/color/48/youtube-play.png" alt="YouTube" class="w-8 h-8">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- HALAMAN PEMBELAJARAN -->
+    <div id="learning-page" class="page">
+        <header class="pt-16 pb-12 px-4 max-w-4xl mx-auto">
+            <button onclick="navigateTo('home-page')" class="flex items-center text-[#029b51] font-bold mb-6 hover:translate-x-[-4px] transition-transform">
+                <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i>
+                Kembali ke Utama
+            </button>
+            <h1 class="text-4xl font-extrabold text-[#242424] tracking-tight mb-2">Menu Pembelajaran</h1>
+            <p class="text-slate-500 text-lg">Silakan pilih jenis materi yang ingin Anda akses.</p>
+        </header>
+        <main class="max-w-4xl mx-auto px-4 pb-24">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <button onclick="navigateTo('materi-page')" class="card-custom p-8 rounded-3xl text-left group">
+                    <div class="icon-box w-14 h-14 flex items-center justify-center rounded-2xl mb-6 shadow-sm">
+                        <i data-lucide="file-text" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-[#242424] mb-2">1. Materi</h3>
+                    <div class="flex items-center text-[#029b51] font-bold text-sm mt-4">Buka Materi <i data-lucide="chevron-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i></div>
+                </button>
+                <button onclick="navigateTo('modul-page')" class="card-custom p-8 rounded-3xl text-left group">
+                    <div class="icon-box w-14 h-14 flex items-center justify-center rounded-2xl mb-6 shadow-sm">
+                        <i data-lucide="tablet-smartphone" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-[#242424] mb-2">2. Modul Digital</h3>
+                    <div class="flex items-center text-[#029b51] font-bold text-sm mt-4">Buka Modul <i data-lucide="chevron-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i></div>
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- HALAMAN MATERI -->
+    <div id="materi-page" class="page">
+        <header class="pt-16 pb-12 px-4 max-w-5xl mx-auto">
+            <button onclick="navigateTo('learning-page')" class="flex items-center text-[#029b51] font-bold mb-6 hover:translate-x-[-4px] transition-transform">
+                <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i>
+                Kembali ke Menu Pembelajaran
+            </button>
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+                <div>
+                    <h1 class="text-4xl font-extrabold text-[#242424] tracking-tight mb-2">Materi</h1>
+                    <p class="text-slate-500 text-lg">Daftar materi yang bisa diakses.</p>
+                </div>
+                <button onclick="loadMateriData()" class="inline-flex items-center px-6 py-3 bg-[#029b51] text-white rounded-2xl text-sm font-bold hover:bg-[#028545] transition-all shadow-md active:scale-95">
+                    <i data-lucide="refresh-cw" class="w-4 h-4 mr-2" id="materi-refresh-icon"></i>
+                    Update
+                </button>
+            </div>
+        </header>
+        <main class="max-w-5xl mx-auto px-4 pb-24">
+            <div class="table-container shadow-2xl overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th class="w-16 text-center">No.</th>
+                                <th>Judul Materi</th>
+                                <th class="w-40 text-center">Akses</th>
+                            </tr>
+                        </thead>
+                        <tbody id="materi-table-body">
+                            <tr>
+                                <td colspan="3" class="text-center py-20 text-slate-400">
+                                    <div class="flex flex-col items-center">
+                                        <div class="animate-spin rounded-full h-10 w-10 border-4 border-[#029b51]/20 border-t-[#029b51] mb-4"></div>
+                                        <span class="font-medium">Menyinkronkan data...</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- HALAMAN MODUL DIGITAL -->
+    <div id="modul-page" class="page">
+        <header class="pt-16 pb-12 px-4 max-w-5xl mx-auto">
+            <button onclick="navigateTo('learning-page')" class="flex items-center text-[#029b51] font-bold mb-6 hover:translate-x-[-4px] transition-transform">
+                <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i>
+                Kembali ke Menu Pembelajaran
+            </button>
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+                <div>
+                    <h1 class="text-4xl font-extrabold text-[#242424] tracking-tight mb-2">Modul Digital</h1>
+                    <p class="text-slate-500 text-lg">Daftar modul digital untuk pembelajaran.</p>
+                </div>
+                <button onclick="loadModulData()" class="inline-flex items-center px-6 py-3 bg-[#029b51] text-white rounded-2xl text-sm font-bold hover:bg-[#028545] transition-all shadow-md active:scale-95">
+                    <i data-lucide="refresh-cw" class="w-4 h-4 mr-2" id="modul-refresh-icon"></i>
+                    Update
+                </button>
+            </div>
+        </header>
+        <main class="max-w-5xl mx-auto px-4 pb-24">
+            <div class="table-container shadow-2xl overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th class="w-16 text-center">No.</th>
+                                <th>Judul Modul</th>
+                                <th class="w-40 text-center">Akses</th>
+                            </tr>
+                        </thead>
+                        <tbody id="modul-table-body">
+                            <tr>
+                                <td colspan="3" class="text-center py-20 text-slate-400">
+                                    <div class="flex flex-col items-center">
+                                        <div class="animate-spin rounded-full h-10 w-10 border-4 border-[#029b51]/20 border-t-[#029b51] mb-4"></div>
+                                        <span class="font-medium">Menyinkronkan data...</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- HALAMAN MENU PENGUMPULAN -->
+    <div id="submission-menu-page" class="page">
+        <header class="pt-16 pb-12 px-4 max-w-4xl mx-auto">
+            <button onclick="navigateTo('home-page')" class="flex items-center text-[#029b51] font-bold mb-6 hover:translate-x-[-4px] transition-transform">
+                <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i>
+                Kembali ke Utama
+            </button>
+            <h1 class="text-4xl font-extrabold text-[#242424] tracking-tight mb-2">Menu Pengumpulan</h1>
+            <p class="text-slate-500 text-lg">Pilih kategori pengumpulan yang ingin Anda akses.</p>
+        </header>
+        <main class="max-w-4xl mx-auto px-4 pb-24">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <button onclick="navigateTo('quiz-page')" class="card-custom p-8 rounded-3xl text-left group">
+                    <div class="icon-box w-14 h-14 flex items-center justify-center rounded-2xl mb-6 shadow-sm">
+                        <i data-lucide="check-circle" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-[#242424] mb-2">1. Tes Pemahaman</h3>
+                    <div class="flex items-center text-[#029b51] font-bold text-sm mt-4">Lihat Daftar Tes <i data-lucide="chevron-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i></div>
+                </button>
+                <button onclick="navigateTo('task-submission-page')" class="card-custom p-8 rounded-3xl text-left group">
+                    <div class="icon-box w-14 h-14 flex items-center justify-center rounded-2xl mb-6 shadow-sm">
+                        <i data-lucide="upload" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-[#242424] mb-2">2. Pengumpulan Tugas</h3>
+                    <div class="flex items-center text-[#029b51] font-bold text-sm mt-4">Kirim Tugas <i data-lucide="chevron-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i></div>
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- HALAMAN TES PEMAHAMAN (TABEL) -->
+    <div id="quiz-page" class="page">
+        <header class="pt-16 pb-12 px-4 max-w-5xl mx-auto">
+            <button onclick="navigateTo('submission-menu-page')" class="flex items-center text-[#029b51] font-bold mb-6 hover:translate-x-[-4px] transition-transform">
+                <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i>
+                Kembali ke Menu
+            </button>
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+                <div>
+                    <h1 class="text-4xl font-extrabold text-[#242424] tracking-tight mb-2">Tes Pemahaman</h1>
+                    <p class="text-slate-500 text-lg">Daftar tes untuk mengevaluasi pemahaman materi.</p>
+                </div>
+                <button onclick="loadQuizData()" class="inline-flex items-center px-6 py-3 bg-[#029b51] text-white rounded-2xl text-sm font-bold hover:bg-[#028545] transition-all shadow-md active:scale-95">
+                    <i data-lucide="refresh-cw" class="w-4 h-4 mr-2" id="quiz-refresh-icon"></i>
+                    Update
+                </button>
+            </div>
+        </header>
+
+        <main class="max-w-5xl mx-auto px-4 pb-24">
+            <div class="table-container shadow-2xl overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th class="w-16 text-center">No.</th>
+                                <th>Judul</th>
+                                <th class="w-40 text-center">Akses</th>
+                            </tr>
+                        </thead>
+                        <tbody id="quiz-table-body">
+                            <tr>
+                                <td colspan="3" class="text-center py-20 text-slate-400">
+                                    <div class="flex flex-col items-center">
+                                        <div class="animate-spin rounded-full h-10 w-10 border-4 border-[#029b51]/20 border-t-[#029b51] mb-4"></div>
+                                        <span class="font-medium">Menghubungkan ke database...</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- HALAMAN PENGUMPULAN TUGAS (TABEL) -->
+    <div id="task-submission-page" class="page">
+        <header class="pt-16 pb-12 px-4 max-w-5xl mx-auto">
+            <button onclick="navigateTo('submission-menu-page')" class="flex items-center text-[#029b51] font-bold mb-6 hover:translate-x-[-4px] transition-transform">
+                <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i>
+                Kembali ke Menu
+            </button>
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+                <div>
+                    <h1 class="text-4xl font-extrabold text-[#242424] tracking-tight mb-2">Pengumpulan Tugas</h1>
+                    <p class="text-slate-500 text-lg">Daftar tugas yang harus dikumpulkan semester ini.</p>
+                </div>
+                <button onclick="loadTaskData()" class="inline-flex items-center px-6 py-3 bg-[#029b51] text-white rounded-2xl text-sm font-bold hover:bg-[#028545] transition-all shadow-md active:scale-95">
+                    <i data-lucide="refresh-cw" class="w-4 h-4 mr-2" id="task-refresh-icon"></i>
+                    Update
+                </button>
+            </div>
+        </header>
+
+        <main class="max-w-5xl mx-auto px-4 pb-24">
+            <div class="table-container shadow-2xl overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th class="w-16 text-center">No.</th>
+                                <th>Nama Tugas</th>
+                                <th class="w-40 text-center">Upload</th>
+                            </tr>
+                        </thead>
+                        <tbody id="task-table-body">
+                            <tr>
+                                <td colspan="3" class="text-center py-20 text-slate-400">
+                                    <div class="flex flex-col items-center">
+                                        <div class="animate-spin rounded-full h-10 w-10 border-4 border-[#029b51]/20 border-t-[#029b51] mb-4"></div>
+                                        <span class="font-medium">Menghubungkan ke database...</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- HALAMAN RPP -->
+    <div id="rpp-page" class="page">
+        <header class="pt-16 pb-12 px-4 max-w-5xl mx-auto">
+            <button onclick="navigateTo('home-page')" class="flex items-center text-[#029b51] font-bold mb-6 hover:translate-x-[-4px] transition-transform">
+                <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i>
+                Kembali ke Utama
+            </button>
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+                <div>
+                    <h1 class="text-4xl font-extrabold text-[#242424] tracking-tight mb-2">Rencana Pelaksanaan Pembelajaran</h1>
+                    <p class="text-slate-500 text-lg">Rencana Pelaksanaan Pembelajaran Semester ini dibuat untuk memastikan implementasi pembelajaran yang efektif.</p>
+                </div>
+                <button onclick="loadRPPData()" class="inline-flex items-center px-6 py-3 bg-[#029b51] text-white rounded-2xl text-sm font-bold hover:bg-[#028545] transition-all shadow-md active:scale-95">
+                    <i data-lucide="refresh-cw" class="w-4 h-4 mr-2" id="refresh-icon"></i>
+                    Update
+                </button>
+            </div>
+        </header>
+
+        <main class="max-w-5xl mx-auto px-4 pb-24">
+            <div class="table-container shadow-2xl overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th class="w-16 text-center">Pert.</th>
+                                <th class="w-1/4">Pokok Pembahasan</th>
+                                <th>Indikator / Capaian</th>
+                                <th class="w-32">Metode</th>
+                                <th class="w-1/4">Evaluasi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rpp-table-body">
+                            <tr>
+                                <td colspan="5" class="text-center py-20 text-slate-400">
+                                    <div class="flex flex-col items-center">
+                                        <div class="animate-spin rounded-full h-10 w-10 border-4 border-[#029b51]/20 border-t-[#029b51] mb-4"></div>
+                                        <span class="font-medium">Menyinkronkan data...</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- HALAMAN JADWAL KULIAH -->
+    <div id="schedule-page" class="page">
+        <header class="pt-16 pb-12 px-4 max-w-5xl mx-auto">
+            <button onclick="navigateTo('home-page')" class="flex items-center text-[#029b51] font-bold mb-6 hover:translate-x-[-4px] transition-transform">
+                <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i>
+                Kembali ke Utama
+            </button>
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+                <div>
+                    <h1 class="text-4xl font-extrabold text-[#242424] tracking-tight mb-2">Jadwal Perkuliahan</h1>
+                    <p class="text-slate-500 text-lg">Tabel Jadwal Dosen dan Mata Kuliah.</p>
+                </div>
+                <button onclick="loadScheduleData()" class="inline-flex items-center px-6 py-3 bg-[#029b51] text-white rounded-2xl text-sm font-bold hover:bg-[#028545] transition-all shadow-md active:scale-95">
+                    <i data-lucide="refresh-cw" class="w-4 h-4 mr-2" id="schedule-refresh-icon"></i>
+                    Update
+                </button>
+            </div>
+        </header>
+
+        <main class="max-w-5xl mx-auto px-4 pb-24">
+            <div class="table-container shadow-2xl overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th class="w-16 text-center">No.</th>
+                                <th>Dosen</th>
+                                <th>Matakuliah</th>
+                                <th class="w-16 text-center">SKS</th>
+                                <th class="w-24 text-center">Semester</th>
+                                <th>Waktu Perkuliahan</th>
+                            </tr>
+                        </thead>
+                        <tbody id="schedule-table-body">
+                            <tr>
+                                <td colspan="6" class="text-center py-20 text-slate-400">
+                                    <div class="flex flex-col items-center">
+                                        <div class="animate-spin rounded-full h-10 w-10 border-4 border-[#029b51]/20 border-t-[#029b51] mb-4"></div>
+                                        <span class="font-medium">Menyinkronkan data...</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="border-t border-slate-200 py-10 text-center text-slate-500 text-sm">
+        <p>&copy; 2026 Portal akademik</p>
+    </footer>
+
+    <script>
+        // URL Apps Script (Ganti jika sudah deploy)
+        const SCRIPT_URL_RPP = "https://script.google.com/macros/s/AKfycbzosfTL1Tce74hKSfp5zlbvyBAjEpqF1pOly8_dEHheuwayy7DRGAM1hc57VtXyZvzg/exec?type=rpp"; 
+        const SCRIPT_URL_QUIZ = "https://script.google.com/macros/s/AKfycbzosfTL1Tce74hKSfp5zlbvyBAjEpqF1pOly8_dEHheuwayy7DRGAM1hc57VtXyZvzg/exec?type=quiz"; 
+        const SCRIPT_URL_TASK = "https://script.google.com/macros/s/AKfycbzosfTL1Tce74hKSfp5zlbvyBAjEpqF1pOly8_dEHheuwayy7DRGAM1hc57VtXyZvzg/exec?type=task"; // URL untuk data Pengumpulan Tugas
+        const SCRIPT_URL_SCHEDULE = "https://script.google.com/macros/s/AKfycbzosfTL1Tce74hKSfp5zlbvyBAjEpqF1pOly8_dEHheuwayy7DRGAM1hc57VtXyZvzg/exec?type=schedule"; // URL untuk data Jadwal Kuliah
+        const SCRIPT_URL_MATERI = "https://script.google.com/macros/s/AKfycbzosfTL1Tce74hKSfp5zlbvyBAjEpqF1pOly8_dEHheuwayy7DRGAM1hc57VtXyZvzg/exec?type=materi"; // URL untuk data Materi
+        const SCRIPT_URL_MODUL = "https://script.google.com/macros/s/AKfycbzosfTL1Tce74hKSfp5zlbvyBAjEpqF1pOly8_dEHheuwayy7DRGAM1hc57VtXyZvzg/exec?type=modul"; // URL untuk data Modul Digital
+
+        lucide.createIcons();
+        
+        let autoRefreshInterval;
+        
+        function startAutoRefresh(pageId) {
+            clearInterval(autoRefreshInterval);
+            if (['rpp-page', 'quiz-page', 'task-submission-page', 'schedule-page', 'materi-page', 'modul-page'].includes(pageId)) {
+                autoRefreshInterval = setInterval(() => {
+                    if (pageId === 'rpp-page') loadRPPData();
+                    else if (pageId === 'quiz-page') loadQuizData();
+                    else if (pageId === 'task-submission-page') loadTaskData();
+                    else if (pageId === 'curriculum-page') loadCurriculumData();
+                    else if (pageId === 'schedule-page') loadScheduleData();
+                    else if (pageId === 'materi-page') loadMateriData();
+                    else if (pageId === 'modul-page') loadModulData();
+                }, 60000); // 60 detik
+            }
+        }
+        
+        function stopAutoRefresh() {
+            clearInterval(autoRefreshInterval);
+        }
+        
+        function parseApiResponse(result) {
+            if (Array.isArray(result)) {
+                return result;
+            }
+            if (result && typeof result === 'object') {
+                if (Array.isArray(result.data)) {
+                    return result.data;
+                }
+                if (result.success && Array.isArray(result.result)) {
+                    return result.result;
+                }
+            }
+            return null;
+        }
+        
+        function navigateTo(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(p => p.classList.remove('active'));
+
+            const target = document.getElementById(pageId);
+            target.classList.add('active');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            lucide.createIcons();
+
+            if (pageId === 'rpp-page') {
+                loadRPPData();
+            } else if (pageId === 'quiz-page') {
+                loadQuizData();
+            } else if (pageId === 'task-submission-page') {
+                loadTaskData();
+            } else if (pageId === 'schedule-page') {
+                loadScheduleData();
+            } else if (pageId === 'materi-page') {
+                loadMateriData();
+            } else if (pageId === 'modul-page') {
+                loadModulData();
+            }
+            
+            startAutoRefresh(pageId);
+        }
+
+        // --- Logika Data Pengumpulan Tugas ---
+        async function loadTaskData() {
+            const tbody = document.getElementById('task-table-body');
+            const refreshIcon = document.getElementById('task-refresh-icon');
+            refreshIcon.classList.add('animate-spin');
+
+            if (!SCRIPT_URL_TASK) {
+                setTimeout(() => {
+                    const dummyTasks = [
+                        { no: "1", nama: "Laporan Praktikum Algoritma", link: "#" },
+                        { no: "2", nama: "Project Akhir Web Design", link: "#" }
+                    ];
+                    renderTaskTable(dummyTasks);
+                    refreshIcon.classList.remove('animate-spin');
+                }, 1000);
+                return;
+            }
+
+            try {
+                const response = await fetch(SCRIPT_URL_TASK);
+                const raw = await response.json();
+                const data = parseApiResponse(raw);
+                if (!Array.isArray(data)) throw new Error('Format data tugas tidak valid.');
+                if (data.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="3" class="text-center py-10 text-slate-500">Tidak ada tugas tersedia.</td></tr>`;
+                } else {
+                    renderTaskTable(data);
+                }
+            } catch (error) {
+                tbody.innerHTML = `<tr><td colspan="3" class="text-center py-10 text-red-500 font-bold">Gagal memuat daftar tugas.</td></tr>`;
+                console.error('loadTaskData error', error);
+            } finally {
+                refreshIcon.classList.remove('animate-spin');
+            }
+        }
+
+        function renderTaskTable(data) {
+            const tbody = document.getElementById('task-table-body');
+            tbody.innerHTML = "";
+            data.forEach(item => {
+                const row = `
+                    <tr>
+                        <td class="text-center font-bold text-slate-400">${item.No || item.no || '-'}</td>
+                        <td class="font-bold text-slate-800">${item.Nama || item.nama || '-'}</td>
+                        <td class="text-center">
+                            <a href="${item.Link || item.link || '#'}" target="_blank" class="btn-access inline-flex items-center bg-slate-800 hover:bg-slate-900">
+                                <i data-lucide="upload-cloud" class="w-3 h-3 mr-2"></i> Kirim File
+                            </a>
+                        </td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+            lucide.createIcons();
+        }
+
+        // --- Logika Data Tes Pemahaman ---
+        async function loadQuizData() {
+            const tbody = document.getElementById('quiz-table-body');
+            const refreshIcon = document.getElementById('quiz-refresh-icon');
+            refreshIcon.classList.add('animate-spin');
+
+            if (!SCRIPT_URL_QUIZ) {
+                setTimeout(() => {
+                    const dummyQuiz = [
+                        { no: "1", judul: "Tes Logika Pemrograman Dasar", link: "#" },
+                        { no: "2", judul: "Kuis Struktur Data Array", link: "#" }
+                    ];
+                    renderQuizTable(dummyQuiz);
+                    refreshIcon.classList.remove('animate-spin');
+                }, 1000);
+                return;
+            }
+
+            try {
+                const response = await fetch(SCRIPT_URL_QUIZ);
+                const raw = await response.json();
+                const data = parseApiResponse(raw);
+                if (!Array.isArray(data)) throw new Error('Format data quiz tidak valid.');
+                if (data.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="3" class="text-center py-10 text-slate-500">Tidak ada tes tersedia.</td></tr>`;
+                } else {
+                    renderQuizTable(data);
+                }
+            } catch (error) {
+                tbody.innerHTML = `<tr><td colspan="3" class="text-center py-10 text-red-500 font-bold">Gagal memuat data tes.</td></tr>`;
+                console.error('loadQuizData error', error);
+            } finally {
+                refreshIcon.classList.remove('animate-spin');
+            }
+        }
+
+        function renderQuizTable(data) {
+            const tbody = document.getElementById('quiz-table-body');
+            tbody.innerHTML = "";
+            data.forEach(item => {
+                const row = `
+                    <tr>
+                        <td class="text-center font-bold text-slate-400">${item.No || item.no || '-'}</td>
+                        <td class="font-bold text-slate-800">${item.Judul || item.judul || '-'}</td>
+                        <td class="text-center">
+                            <a href="${item.Link || item.link || '#'}" target="_blank" class="btn-access inline-flex items-center">
+                                <i data-lucide="external-link" class="w-3 h-3 mr-2"></i> Buka Tes
+                            </a>
+                        </td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+            lucide.createIcons();
+        }
+
+        // --- Logika Data RPP ---
+        async function loadRPPData() {
+            const tbody = document.getElementById('rpp-table-body');
+            const refreshIcon = document.getElementById('refresh-icon');
+            refreshIcon.classList.add('animate-spin');
+
+            if (!SCRIPT_URL_RPP) {
+                setTimeout(() => {
+                    const dummyData = [
+                        { p: "1", b: "Pengenalan Algoritma & Flowchart", i: "Mampu menjelaskan alur logika pemrograman dasar", m: "Ceramah", e: "Pre-test" },
+                        { p: "2", b: "Variabel & Tipe Data", i: "Implementasi penyimpanan data memori", m: "Praktikum", e: "Tugas 1" }
+                    ];
+                    renderRPPTable(dummyData);
+                    refreshIcon.classList.remove('animate-spin');
+                }, 1200);
+                return;
+            }
+
+            try {
+                const response = await fetch(SCRIPT_URL_RPP);
+                const raw = await response.json();
+                const data = parseApiResponse(raw);
+                if (!Array.isArray(data)) throw new Error('Format data RPP tidak valid.');
+                if (data.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="5" class="text-center py-10 text-slate-500">Tidak ada RPP tersedia.</td></tr>`;
+                } else {
+                    renderRPPTable(data);
+                }
+            } catch (error) {
+                tbody.innerHTML = `<tr><td colspan="5" class="text-center py-10 text-red-500 font-bold">Terjadi kesalahan koneksi data.</td></tr>`;
+                console.error('loadRPPData error', error);
+            } finally {
+                refreshIcon.classList.remove('animate-spin');
+            }
+        }
+
+        function renderRPPTable(data) {
+            const tbody = document.getElementById('rpp-table-body');
+            tbody.innerHTML = "";
+            data.forEach(item => {
+                const row = `
+                    <tr>
+                        <td class="text-center font-bold text-[#029b51] bg-[#ebfff5]/30">${item.Pertemuan || item.pertemuan || '-'}</td>
+                        <td class="font-bold text-slate-800">${item["Pokok Pembahasan"] || item.pembahasan || '-'}</td>
+                        <td class="text-slate-600 leading-relaxed">${item["Indikator/Capaian"] || item.indikator || '-'}</td>
+                        <td><span class="badge-method">${item.Metode || item.metode || '-'}</span></td>
+                        <td class="text-slate-500 italic text-sm">${item.Evaluasi || item.evaluasi || '-'}</td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+            lucide.createIcons();
+        }
+
+        // --- Logika Data Kurikulum Perkuliahan ---
+        async function loadCurriculumData() {
+            const tbody = document.getElementById('curriculum-table-body');
+            const refreshIcon = document.getElementById('curriculum-refresh-icon');
+            refreshIcon.classList.add('animate-spin');
+
+            if (!SCRIPT_URL_CURRICULUM) {
+                setTimeout(() => {
+                    const dummyData = [
+                        { no: "1", dosen: "Dr. Intan Prasetiya", matakuliah: "Basis Data", sks: "3", semester: "Genap", waktu: "Senin 10:00-12:00" },
+                        { no: "2", dosen: "Budi Santoso, M.Kom.", matakuliah: "Pemrograman Web", sks: "4", semester: "Ganjil", waktu: "Rabu 13:00-16:00" }
+                    ];
+                    renderCurriculumTable(dummyData);
+                    refreshIcon.classList.remove('animate-spin');
+                }, 1000);
+                return;
+            }
+
+            try {
+                const response = await fetch(SCRIPT_URL_CURRICULUM);
+                const raw = await response.json();
+                const data = parseApiResponse(raw);
+                if (!Array.isArray(data)) throw new Error('Format data kurikulum tidak valid.');
+                if (data.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="6" class="text-center py-10 text-slate-500">Tidak ada kurikulum tersedia.</td></tr>`;
+                } else {
+                    renderCurriculumTable(data);
+                }
+            } catch (error) {
+                tbody.innerHTML = `<tr><td colspan="6" class="text-center py-10 text-red-500 font-bold">Gagal memuat data kurikulum.</td></tr>`;
+                console.error('loadCurriculumData error', error);
+            } finally {
+                refreshIcon.classList.remove('animate-spin');
+            }
+        }
+
+        function renderCurriculumTable(data) {
+            const tbody = document.getElementById('curriculum-table-body');
+            tbody.innerHTML = "";
+            data.forEach(item => {
+                const row = `
+                    <tr>
+                        <td class="text-center font-bold text-slate-400">${item.No || item.no || '-'}</td>
+                        <td class="font-bold text-slate-800">${item.Dosen || item.dosen || '-'}</td>
+                        <td class="font-bold text-slate-800">${item.Matakuliah || item.matakuliah || '-'}</td>
+                        <td class="text-center">${item.SKS || item.sks || '-'}</td>
+                        <td class="text-center">${item.Semester || item.semester || '-'}</td>
+                        <td class="text-slate-600">${item.Waktu || item.waktu || '-'}</td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+            lucide.createIcons();
+        }
+
+        // --- Logika Data Jadwal Kuliah ---
+        async function loadScheduleData() {
+            const tbody = document.getElementById('schedule-table-body');
+            const refreshIcon = document.getElementById('schedule-refresh-icon');
+            refreshIcon.classList.add('animate-spin');
+
+            if (!SCRIPT_URL_SCHEDULE) {
+                setTimeout(() => {
+                    const dummyData = [
+                        { no: "1", dosen: "Dr. Anita Wulandari", matakuliah: "Analisis dan Desain Sistem", sks: "3", semester: "Genap", waktu: "Selasa 08:00-10:30" },
+                        { no: "2", dosen: "Ir. Fajar Pratama", matakuliah: "Jaringan Komputer", sks: "3", semester: "Ganjil", waktu: "Kamis 14:00-16:30" }
+                    ];
+                    renderScheduleTable(dummyData);
+                    refreshIcon.classList.remove('animate-spin');
+                }, 1000);
+                return;
+            }
+
+            try {
+                const response = await fetch(SCRIPT_URL_SCHEDULE);
+                const raw = await response.json();
+                const data = parseApiResponse(raw);
+                if (!Array.isArray(data)) throw new Error('Format data jadwal tidak valid.');
+                if (data.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="6" class="text-center py-10 text-slate-500">Tidak ada jadwal tersedia.</td></tr>`;
+                } else {
+                    renderScheduleTable(data);
+                }
+            } catch (error) {
+                tbody.innerHTML = `<tr><td colspan="6" class="text-center py-10 text-red-500 font-bold">Gagal memuat data jadwal.</td></tr>`;
+                console.error('loadScheduleData error', error);
+            } finally {
+                refreshIcon.classList.remove('animate-spin');
+            }
+        }
+
+        function renderScheduleTable(data) {
+            const tbody = document.getElementById('schedule-table-body');
+            tbody.innerHTML = "";
+            data.forEach(item => {
+                const row = `
+                    <tr>
+                        <td class="text-center font-bold text-slate-400">${item.No || item.no || '-'}</td>
+                        <td class="font-bold text-slate-800">${item.Dosen || item.dosen || '-'}</td>
+                        <td class="font-bold text-slate-800">${item.Matakuliah || item.matakuliah || '-'}</td>
+                        <td class="text-center">${item.SKS || item.sks || '-'}</td>
+                        <td class="text-center">${item.Semester || item.semester || '-'}</td>
+                        <td class="text-slate-600">${item.Waktu || item.waktu || '-'}</td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+            lucide.createIcons();
+        }
+
+        // --- Logika Data Materi ---
+        async function loadMateriData() {
+            const tbody = document.getElementById('materi-table-body');
+            const refreshIcon = document.getElementById('materi-refresh-icon');
+            refreshIcon.classList.add('animate-spin');
+
+            if (!SCRIPT_URL_MATERI) {
+                setTimeout(() => {
+                    const dummyData = [
+                        { no: "1", judul: "Dasar Pemrograman JavaScript", link: "#" },
+                        { no: "2", judul: "Konsep Object Oriented", link: "#" }
+                    ];
+                    renderMateriTable(dummyData);
+                    refreshIcon.classList.remove('animate-spin');
+                }, 1000);
+                return;
+            }
+
+            try {
+                const response = await fetch(SCRIPT_URL_MATERI);
+                const raw = await response.json();
+                const data = parseApiResponse(raw);
+                if (!Array.isArray(data)) throw new Error('Format data materi tidak valid.');
+                if (data.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="3" class="text-center py-10 text-slate-500">Tidak ada materi tersedia.</td></tr>`;
+                } else {
+                    renderMateriTable(data);
+                }
+            } catch (error) {
+                tbody.innerHTML = `<tr><td colspan="3" class="text-center py-10 text-red-500 font-bold">Gagal memuat data materi.</td></tr>`;
+                console.error('loadMateriData error', error);
+            } finally {
+                refreshIcon.classList.remove('animate-spin');
+            }
+        }
+
+        function renderMateriTable(data) {
+            const tbody = document.getElementById('materi-table-body');
+            tbody.innerHTML = "";
+            data.forEach(item => {
+                const row = `
+                    <tr>
+                        <td class="text-center font-bold text-slate-400">${item.No || item.no || '-'}</td>
+                        <td class="font-bold text-slate-800">${item["Judul Materi"] || item.judul || '-'}</td>
+                        <td class="text-center">
+                            <a href="${item.Link || item.link || '#'}" target="_blank" class="btn-access inline-flex items-center">
+                                <i data-lucide="external-link" class="w-3 h-3 mr-2"></i> Akses
+                            </a>
+                        </td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+            lucide.createIcons();
+        }
+
+        // --- Logika Data Modul Digital ---
+        async function loadModulData() {
+            const tbody = document.getElementById('modul-table-body');
+            const refreshIcon = document.getElementById('modul-refresh-icon');
+            refreshIcon.classList.add('animate-spin');
+
+            if (!SCRIPT_URL_MODUL) {
+                setTimeout(() => {
+                    const dummyData = [
+                        { no: "1", judul: "Modul Pemrograman Dasar", link: "#" },
+                        { no: "2", judul: "Modul Basis Data", link: "#" }
+                    ];
+                    renderModulTable(dummyData);
+                    refreshIcon.classList.remove('animate-spin');
+                }, 1000);
+                return;
+            }
+
+            try {
+                const response = await fetch(SCRIPT_URL_MODUL);
+                const raw = await response.json();
+                const data = parseApiResponse(raw);
+                if (!Array.isArray(data)) throw new Error('Format data modul tidak valid.');
+                if (data.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="3" class="text-center py-10 text-slate-500">Tidak ada modul tersedia.</td></tr>`;
+                } else {
+                    renderModulTable(data);
+                }
+            } catch (error) {
+                tbody.innerHTML = `<tr><td colspan="3" class="text-center py-10 text-red-500 font-bold">Gagal memuat data modul.</td></tr>`;
+                console.error('loadModulData error', error);
+            } finally {
+                refreshIcon.classList.remove('animate-spin');
+            }
+        }
+
+        function renderModulTable(data) {
+            const tbody = document.getElementById('modul-table-body');
+            tbody.innerHTML = "";
+            data.forEach(item => {
+                const row = `
+                    <tr>
+                        <td class="text-center font-bold text-slate-400">${item.No || item.no || '-'}</td>
+                        <td class="font-bold text-slate-800">${item["Judul Modul"] || item.judul || '-'}</td>
+                        <td class="text-center">
+                            <a href="${item.Link || item.link || '#'}" target="_blank" class="btn-access inline-flex items-center">
+                                <i data-lucide="external-link" class="w-3 h-3 mr-2"></i> Akses
+                            </a>
+                        </td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+            lucide.createIcons();
+        }
+
+        // Animasi Masuk
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.card-custom');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 80 * index);
+            });
+        });
+    </script>
+</body>
+</html>
